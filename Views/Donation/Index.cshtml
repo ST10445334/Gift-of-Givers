@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Donate";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">SUPPORT HUMANITARIAN RESPONSE</span>
+        <h1>Every donation fuels recovery.</h1>
+        <p>
+            Your contribution helps provide food, water, medical assistance,
+            shelter and long-term recovery in communities affected by disaster.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="about-section">
+            <h2>How your donation helps</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-number">01</div>
+                    <h3>Food &amp; Water</h3>
+                    <p>Emergency rations and clean water delivered within hours.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number">02</div>
+                    <h3>Medical Relief</h3>
+                    <p>Mobile clinics, medicines and trauma support.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number">03</div>
+                    <h3>Shelter &amp; Recovery</h3>
+                    <p>Temporary housing and long-term rebuilding support.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 40px;">
+                To make a donation, please sign in or create an account.
+            </p>
+
+            <a class="btn btn-primary"
+               asp-area="Identity" asp-page="/Account/Login">
+                Sign in to donate
+            </a>
+            <a class="btn btn-outline"
+               asp-area="Identity" asp-page="/Account/Register"
+               style="color: var(--navy); border-color: var(--navy);">
+                Create an account
+            </a>
+        </div>
+    </div>
+</section>

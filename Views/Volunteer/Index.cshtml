@@ -1,0 +1,76 @@
+﻿@using Gift_of_Givers.Models
+@model Volunteer
+
+@{
+    ViewData["Title"] = "Volunteer";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">JOIN THE RESPONSE NETWORK</span>
+        <h1>Volunteer details.</h1>
+        <p>
+            Fill in your details below. Admins will use this
+            information to contact you when a response team
+            needs your skills.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="about-section">
+
+            <h2>Your Volunteer Information</h2>
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">@TempData["Success"]</div>
+            }
+
+            <form asp-controller="Volunteer" asp-action="Index" method="post">
+
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="FullName" class="form-label">Full Name</label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                    <input asp-for="PhoneNumber" class="form-control"
+                           placeholder="+27 ..." />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Skills" class="form-label">Skills / Areas of Interest</label>
+                    <textarea asp-for="Skills" class="form-control" rows="3"
+                              placeholder="e.g. medical, logistics, fundraising"></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Availability" class="form-label">Availability</label>
+                    <input asp-for="Availability" class="form-control"
+                           placeholder="e.g. Weekends, Evenings" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save My Details</button>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

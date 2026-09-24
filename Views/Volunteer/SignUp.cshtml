@@ -1,0 +1,58 @@
+﻿@using Gift_of_Givers.Models
+@model Volunteer
+
+@{
+    ViewData["Title"] = "Volunteer Sign-Up";
+}
+
+<section class="section">
+    <div class="container">
+        <div class="about-section">
+            <h2>Volunteer Sign-Up</h2>
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">@TempData["Success"]</div>
+            }
+
+            <form asp-controller="Volunteer" asp-action="SignUp" method="post">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="FullName" class="form-label">Full Name</label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Skills" class="form-label">Skills / Areas of Interest</label>
+                    <textarea asp-for="Skills" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Availability" class="form-label">Availability</label>
+                    <input asp-for="Availability" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sign Me Up</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

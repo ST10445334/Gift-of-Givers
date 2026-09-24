@@ -1,0 +1,46 @@
+﻿@model List<Gift_of_Givers.Models.Volunteer>
+@{
+    ViewData["Title"] = "Volunteers";
+}
+
+<section class="section">
+    <div class="container">
+
+        <h2>Volunteers</h2>
+        <p style="color: var(--muted);">Everyone who has submitted volunteer details.</p>
+
+        <table class="table" style="margin-top:20px;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Skills</th>
+                    <th>Availability</th>
+                    <th>Joined</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count == 0)
+                {
+                    <tr><td colspan="6" style="color: var(--muted);">No volunteers yet.</td></tr>
+                }
+                else
+                {
+                    @foreach (var v in Model)
+                    {
+                        <tr>
+                            <td>@v.FullName</td>
+                            <td>@v.Email</td>
+                            <td>@v.PhoneNumber</td>
+                            <td>@v.Skills</td>
+                            <td>@v.Availability</td>
+                            <td>@v.RegisteredAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</section>

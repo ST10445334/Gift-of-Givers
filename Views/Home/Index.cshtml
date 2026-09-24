@@ -1,0 +1,238 @@
+﻿@{
+    ViewData["Title"] = "Humanitarian Response";
+}
+
+<section class="hero">
+    <div class="container hero-content">
+
+        <div class="hero-text">
+
+            <span class="eyebrow">
+                HUMANITARIAN RESPONSE PLATFORM
+            </span>
+
+            <h1>
+                When disaster strikes,
+                <span>help moves faster.</span>
+            </h1>
+
+            <p>
+                Connecting people, resources, volunteers and relief
+                projects through one coordinated humanitarian platform.
+            </p>
+
+            <div class="hero-actions">
+
+                <a asp-controller="Home"
+                   asp-action="About"
+                   class="btn btn-primary">
+                    Learn More
+                </a>
+
+                <a href="#relief-projects"
+                   class="btn btn-outline">
+                    View Relief Projects
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="stats-section">
+
+    <div class="container stats-grid">
+
+        <div class="stat-card">
+            <strong>24/7</strong>
+            <span>Response Coordination</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>100+</strong>
+            <span>Volunteers</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>50+</strong>
+            <span>Relief Projects</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>1000+</strong>
+            <span>People Supported</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="relief-projects" class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                OUR RESPONSE
+            </span>
+
+            <h2>
+                Relief where it is needed most
+            </h2>
+
+            <p>
+                Coordinate humanitarian assistance through donations,
+                volunteers, supplies and relief projects.
+            </p>
+
+        </div>
+
+
+        <div class="project-grid">
+
+            <article class="project-card">
+
+                <div class="project-icon">
+                    💧
+                </div>
+
+                <h3>
+                    Food & Water Response
+                </h3>
+
+                <p>
+                    Supporting communities with essential food,
+                    clean water and emergency supplies.
+                </p>
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                         style="width: 72%;">
+                    </div>
+
+                </div>
+
+                <div class="project-footer">
+                    <span>Active</span>
+                    <strong>72%</strong>
+                </div>
+
+            </article>
+
+
+            <article class="project-card">
+
+                <div class="project-icon">
+                    🏥
+                </div>
+
+                <h3>
+                    Medical Relief
+                </h3>
+
+                <p>
+                    Supporting medical teams with equipment,
+                    supplies and volunteer coordination.
+                </p>
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                         style="width: 48%;">
+                    </div>
+
+                </div>
+
+                <div class="project-footer">
+                    <span>Active</span>
+                    <strong>48%</strong>
+                </div>
+
+            </article>
+
+
+            <article class="project-card">
+
+                <div class="project-icon">
+                    🏠
+                </div>
+
+                <h3>
+                    Shelter & Recovery
+                </h3>
+
+                <p>
+                    Identifying suitable emergency shelter
+                    facilities and supporting displaced communities.
+                </p>
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                         style="width: 28%;">
+                    </div>
+
+                </div>
+
+                <div class="project-footer">
+                    <span>Planning</span>
+                    <strong>28%</strong>
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="action-section">
+
+    <div class="container action-grid">
+
+        <div>
+
+            <span class="eyebrow">
+                GET INVOLVED
+            </span>
+
+            <h2>
+                Everyone can play a role.
+            </h2>
+
+            <p>
+                Whether you want to donate, volunteer or support
+                humanitarian operations, your contribution can become
+                part of a coordinated response.
+            </p>
+
+        </div>
+
+
+        <div class="action-buttons">
+
+            <a asp-controller="Donation"
+               asp-action="Index"
+               class="btn btn-primary">
+                Donate
+            </a>
+
+            <a asp-controller="Volunteer"
+               asp-action="Index"
+               class="btn btn-light">
+                Volunteer
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

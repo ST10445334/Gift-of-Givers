@@ -1,0 +1,52 @@
+# Gift of the Givers - continuous build pipeline
+# Runs automatically on every push to main/master and on pull requests.
+
+trigger:
+  branches:
+    include:
+      - main
+      - master
+
+pr:
+  branches:
+    include:
+      - main
+      - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+  # Make sure the .NET 9 SDK (the project's target framework) is on the agent
+  - task: UseDotNet@2
+    displayName: 'Install .NET 9 SDK'
+    inputs:
+      packageType: 'sdk'
+      version: '9.0.x'
+
+  # 1. Restore dependencies (NuGet packages)
+  - task: DotNetCoreCLI@2
+    displayName: 'Restore dependencies'
+    inputs:
+      command: 'restore'
+      projects: '**/*.sln'
+
+  # 2. Build the Visual Studio solution
+  - task: DotNetCoreCLI@2
+    displayName: 'Build solution'
+    inputs:
+      command: 'build'
+      projects: '**/*.sln'
+      arguments: '--configuration $(buildConfiguration) --no-restore'
+
+  # 3. Run the unit tests and publish the results to the pipeline's Tests tab
+  - task: DotNetCoreCLI@2
+    displayName: 'Run tests'
+    inputs:
+      command: 'test'
+      projects: '**/*Tests.csproj'
+      arguments: '--configuration $(buildConfiguration) --no-build'
+      publishTestResults: true

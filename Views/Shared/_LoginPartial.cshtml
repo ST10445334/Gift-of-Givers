@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Gift_of_Givers.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <span class="nav-link">
+                Hello, @UserManager.GetUserName(User)!
+            </span>
+        </li>
+
+        <li class="nav-item">
+            <form asp-page="/Accounts/Logout"
+                  method="post">
+                <button type="submit"
+                        class="nav-link btn btn-link">
+                    Logout
+                </button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link"
+               asp-page="/Accounts/Login">
+                Login
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link"
+               asp-page="/Accounts/Register">
+                Register
+            </a>
+        </li>
+    }
+</ul>

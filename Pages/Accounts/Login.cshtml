@@ -1,0 +1,69 @@
+﻿@page
+@model Gift_of_Givers.Pages.Accounts.LoginModel
+
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<section class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="auth-header">
+
+            <div class="auth-mark">G</div>
+
+            <span class="eyebrow">SECURE HUMANITARIAN ACCESS</span>
+
+            <h1>Welcome back</h1>
+
+            <p>
+                Sign in to continue supporting humanitarian
+                relief and recovery operations.
+            </p>
+
+        </div>
+
+        <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.Email" class="form-label">Email address</label>
+                <input asp-for="Input.Email" class="form-control"
+                       autocomplete="username"
+                       placeholder="Enter your email address" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Input.Password" class="form-label">Password</label>
+                <input asp-for="Input.Password" class="form-control"
+                       autocomplete="current-password"
+                       placeholder="Enter your password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="auth-options">
+                <div class="form-check">
+                    <input asp-for="Input.RememberMe" class="form-check-input" />
+                    <label class="form-check-label">Remember me</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn auth-submit">Sign In</button>
+
+        </form>
+
+        <div class="auth-footer">
+            <span>Don't have an account?</span>
+            <a asp-page="/Accounts/Register">Create an account</a>
+        </div>
+
+    </div>
+
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

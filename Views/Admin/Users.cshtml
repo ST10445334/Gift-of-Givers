@@ -1,0 +1,42 @@
+﻿@model List<Gift_of_Givers.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "Accounts";
+}
+
+<section class="section">
+    <div class="container">
+
+        <h2>Registered Accounts</h2>
+        <p style="color: var(--muted);">Every account that has registered on the platform.</p>
+
+        <table class="table" style="margin-top:20px;">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Phone</th>
+                    <th>Email Confirmed</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count == 0)
+                {
+                    <tr><td colspan="4" style="color: var(--muted);">No accounts yet.</td></tr>
+                }
+                else
+                {
+                    @foreach (var u in Model)
+                    {
+                        <tr>
+                            <td>@u.Email</td>
+                            <td>@u.UserName</td>
+                            <td>@u.PhoneNumber</td>
+                            <td>@(u.EmailConfirmed ? "Yes" : "No")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</section>

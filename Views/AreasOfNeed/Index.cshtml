@@ -1,0 +1,132 @@
+﻿@model List<Gift_of_Givers.Models.AreaOfNeed>
+@{
+    ViewData["Title"] = "Areas of Need";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">WHERE HELP IS NEEDED</span>
+        <h1>Current areas of need.</h1>
+        <p>Live view of the regions where our teams are responding.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="about-section">
+
+            <style>
+                .dummy-map {
+                    position: relative;
+                    width: 100%;
+                    height: 520px;
+                    border-radius: 16px;
+                    background: radial-gradient(circle at 30% 40%, #e8eef7 0%, transparent 40%), linear-gradient(135deg, #0b1f3a, #123f7a);
+                    overflow: hidden;
+                    box-shadow: 0 12px 30px rgba(11,31,58,0.15);
+                }
+
+                .map-marker {
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%);
+                    border: 3px solid white;
+                    box-shadow: 0 0 0 6px rgba(255,255,255,0.12);
+                    cursor: pointer;
+                    transition: 0.2s ease;
+                }
+
+                    .map-marker:hover {
+                        transform: translate(-50%, -50%) scale(1.35);
+                    }
+
+                    .map-marker.Critical {
+                        background: #c62828;
+                    }
+
+                    .map-marker.High {
+                        background: #d8a52b;
+                    }
+
+                    .map-marker.Medium {
+                        background: #1f5b9f;
+                    }
+
+                    .map-marker.Low {
+                        background: #4caf50;
+                    }
+
+                .map-legend {
+                    display: flex;
+                    gap: 20px;
+                    margin-top: 20px;
+                    color: var(--muted);
+                    font-size: 0.9rem;
+                }
+
+                .legend-dot {
+                    display: inline-block;
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    margin-right: 6px;
+                    vertical-align: middle;
+                }
+
+                .map-info {
+                    margin-top: 30px;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 20px;
+                }
+
+                .map-info-card {
+                    border: 1px solid var(--line);
+                    border-radius: 10px;
+                    padding: 20px;
+                    background: white;
+                }
+
+                    .map-info-card h4 {
+                        margin: 0 0 6px;
+                        color: var(--navy);
+                    }
+
+                    .map-info-card span {
+                        color: var(--muted);
+                        font-size: 0.9rem;
+                    }
+            </style>
+
+            <div class="dummy-map">
+                @foreach (var area in Model)
+                {
+                    <div class="map-marker @area.Severity"
+                         style="left:@(area.XPercent)%; top:@(area.YPercent)%;"
+                         title="@area.Name (@area.Region) - @area.Severity"></div>
+                }
+            </div>
+
+            <div class="map-legend">
+                <span><span class="legend-dot" style="background:#c62828"></span>Critical</span>
+                <span><span class="legend-dot" style="background:#d8a52b"></span>High</span>
+                <span><span class="legend-dot" style="background:#1f5b9f"></span>Medium</span>
+                <span><span class="legend-dot" style="background:#4caf50"></span>Low</span>
+            </div>
+
+            <div class="map-info">
+                @foreach (var area in Model)
+                {
+                    <div class="map-info-card">
+                        <h4>@area.Name</h4>
+                        <span>@area.Region — <strong>@area.Severity</strong></span>
+                        <p style="margin-top:8px;">@area.Notes</p>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>

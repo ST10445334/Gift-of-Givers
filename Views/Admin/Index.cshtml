@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">ADMIN CONSOLE</span>
+        <h1>Operations overview.</h1>
+        <p>Live totals from the platform — donations, volunteers and registered accounts.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <strong>R @ViewBag.TotalDonations</strong>
+                <span>Total Donations</span>
+            </div>
+            <div class="stat-card">
+                <strong>@ViewBag.DonationCount</strong>
+                <span>Donation Records</span>
+            </div>
+            <div class="stat-card">
+                <strong>@ViewBag.VolunteerCount</strong>
+                <span>Volunteers</span>
+            </div>
+            <div class="stat-card">
+                <strong>@ViewBag.UserCount</strong>
+                <span>Registered Users</span>
+            </div>
+        </div>
+
+        <div style="margin-top:40px; display:flex; gap:15px; flex-wrap:wrap;">
+            <a class="btn btn-primary" asp-action="Donors">View Donors</a>
+            <a class="btn btn-primary" asp-action="Volunteers">View Volunteers</a>
+            <a class="btn btn-primary" asp-action="Users">View Accounts</a>
+        </div>
+
+    </div>
+</section>
